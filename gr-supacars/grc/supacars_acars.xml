@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<block>
+  <name>ACARSdecoder</name>
+  <key>supacars_acars</key>
+  <category>[supacars]</category>
+  <import>import supacars</import>
+  <make>supacars.acars($samp_rate, $corr_thres)</make>
+  <callback>set_corr_thres($corr_thres)</callback>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>Sample rate</name>
+    <key>samp_rate</key>
+    <type>float</type>
+  </param>
+  <param>
+    <name>Correlation threshold</name>
+    <key>corr_thres</key>
+    <type>float</type>
+  </param>
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>raw_output</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+ <source>
+    <name>parser_output</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+</block>
