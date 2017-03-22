@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<block>
+  <name>PyQT Real Time Plot</name>
+  <key>pyqt_time_plot</key>
+  <category>pyqt</category>
+  <import>import pyqt</import>
+  <make>#set $win = 'self._%s_win'%$id
+pyqt.time_plot($l)
+self._$(id)_win = self.$(id);
+$(gui_hint()($win))
+#if $style() == "dots"
+self.$(id).line_off()
+#end if
+</make>
+
+  <param>
+    <name>GUI Hint</name>
+    <key>gui_hint</key>
+    <value></value>
+    <type>gui_hint</type>
+    <hide>part</hide>
+  </param>
+    
+  <param>
+    <name>Plot Style</name>
+    <key>style</key>
+    <value>line</value>
+    <type>enum</type>
+      <option>
+        <name>Line</name>
+        <key>line</key>
+      </option>
+      <option>
+        <name>Dots</name>
+        <key>dots</key>
+      </option>
+    </param>
+
+  <param>
+    <name>Label</name>
+    <key>l</key>
+    <value></value>
+    <type>string</type>
+  </param>
+
+  <sink>
+    <name>pdus</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+</block>
